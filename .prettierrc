@@ -1,0 +1,9 @@
+{
+    "jsxSingleQuote": false,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "tslintIntegration": true,
+    "useTabs": false,
+    "stylelintIntegration": true
+}

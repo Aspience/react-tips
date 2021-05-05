@@ -1,0 +1,22 @@
+{
+  "name": "react-tips",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Aspience/react-tips.git",
+  "author": "Aspience",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/react": "^17.0.5",
+    "@types/react-redux": "^7.1.16",
+    "@types/redux": "^3.6.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0"
+  }
+}
