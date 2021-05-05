@@ -34,13 +34,13 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
 ) => (state: S, nativeAction: Actions): S => {
     let newState = state;
     const { reducerName } = config;
-    const action = decapsulateAction(`${reducerName}/labels/`, nativeAction);
+    const action = decapsulateAction(`${reducerName}/_foo/`, nativeAction);
 
     switch (action.type) {
         case 'clear':
             newState = {
                 ...newState,
-                _labels: {
+                _foo: {
                     ...state._foo,
                     selected: [],
                 },
@@ -49,7 +49,7 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
         case 'save':
             newState = {
                 ...newState,
-                _labels: {
+                _foo: {
                     ...state._foo,
                     saved: state._foo ? [...state._foo.selected] : [],
                 },
@@ -58,7 +58,7 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
         case 'searchStart':
             newState = {
                 ...newState,
-                _labels: {
+                _foo: {
                     ...state._foo,
                     loading: true,
                     error: null,
@@ -68,7 +68,7 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
         case 'searchSuccess':
             newState = {
                 ...newState,
-                _labels: {
+                _foo: {
                     ...state._foo,
                     data: action.result,
                     error: null,
@@ -78,7 +78,7 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
         case 'searchFailure':
             newState = {
                 ...newState,
-                _labels: {
+                _foo: {
                     ...state._foo,
                     loading: false,
                     error: action.message,
