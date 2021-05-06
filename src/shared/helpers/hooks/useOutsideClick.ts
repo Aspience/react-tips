@@ -1,4 +1,10 @@
-import { RefObject, useCallback, useEffect, useRef } from 'react';
+import {
+    RefObject,
+    useCallback,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+} from 'react';
 
 export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
     ref: RefObject<T> | RefObject<T>[],
@@ -8,17 +14,13 @@ export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
         savedHandler.current = handler;
     });
 
-    useEffect(() => {
-        const body = document.querySelector('body');
+    useLayoutEffect(() => {
+        const body = document.querySelector('body') as HTMLBodyElement;
 
-        if (body) {
-            body.addEventListener('click', clickHandler);
-        }
+        body.addEventListener('click', clickHandler);
 
         return () => {
-            if (body) {
-                body.removeEventListener('click', clickHandler);
-            }
+            body.removeEventListener('click', clickHandler);
         };
     }, [ref, handler]);
 
@@ -27,7 +29,7 @@ export const useOutsideClick = <T extends HTMLElement = HTMLElement>(
     const clickHandler = useCallback((e: MouseEvent) => {
         const refs = Array.isArray(ref) ? ref : [ref];
         const contains = !!refs.find(
-            item =>
+            (item) =>
                 item.current !== null &&
                 item.current.contains(e.target as HTMLElement)
         );
