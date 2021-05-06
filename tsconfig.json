@@ -22,7 +22,11 @@
     "baseUrl": ".",
     "typeRoots": [
       "./src/@types"
-    ]
+    ],
+    "paths": {
+      "@tips/*": ["src/tips/*"],
+      "@shared/*": ["src/shared/*"]
+    }
   },
   "include": [
     "src"
