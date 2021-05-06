@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { Switch } from 'react-router';
 
 import { pages } from '../../pages';
-import { PrivateRoute } from '@tips/routerArchitecture/router/components/privateRoute';
-import { PublicRoute } from '@tips/routerArchitecture/router/components/publicRoute';
+import { PrivateRoute } from '../../components/privateRoute';
+import { PublicRoute } from '../../components/publicRoute';
 
 export const Router: FC = () => {
     return (

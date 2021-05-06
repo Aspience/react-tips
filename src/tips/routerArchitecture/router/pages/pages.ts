@@ -1,10 +1,8 @@
-import { DeepReadonly } from '@shared/helpers/types/DeepReadonly';
-
 import LoginPage from './../../pages/login';
 import RootPage from './../../pages/root';
 import { PageProps } from './../components/page/types';
 
-export const pages: DeepReadonly<PageProps[]> = [
+export const pages: PageProps[] = [
     {
         name: 'login',
         title: 'Login',
@@ -17,7 +15,8 @@ export const pages: DeepReadonly<PageProps[]> = [
     },
     {
         name: 'root',
-        title: 'Main page',
+        title: '%template - Main page',
+        titleTemplates: ['template'],
         route: '/',
         component: RootPage,
     },
