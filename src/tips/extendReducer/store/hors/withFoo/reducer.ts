@@ -32,14 +32,13 @@ export const withFooInitialState = <T>(
 export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
     baseReducer: Reducer<S>
 ) => (state: S, nativeAction: Actions): S => {
-    let newState = state;
     const { reducerName } = config;
     const action = decapsulateAction(`${reducerName}/_foo/`, nativeAction);
 
     switch (action.type) {
         case 'clear':
-            newState = {
-                ...newState,
+            state = {
+                ...state,
                 _foo: {
                     ...state._foo,
                     selected: [],
@@ -47,8 +46,8 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
             };
             break;
         case 'save':
-            newState = {
-                ...newState,
+            state = {
+                ...state,
                 _foo: {
                     ...state._foo,
                     saved: state._foo ? [...state._foo.selected] : [],
@@ -56,8 +55,8 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
             };
             break;
         case 'searchStart':
-            newState = {
-                ...newState,
+            state = {
+                ...state,
                 _foo: {
                     ...state._foo,
                     loading: true,
@@ -66,8 +65,8 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
             };
             break;
         case 'searchSuccess':
-            newState = {
-                ...newState,
+            state = {
+                ...state,
                 _foo: {
                     ...state._foo,
                     data: action.result,
@@ -76,8 +75,8 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
             };
             break;
         case 'searchFailure':
-            newState = {
-                ...newState,
+            state = {
+                ...state,
                 _foo: {
                     ...state._foo,
                     loading: false,
@@ -87,6 +86,6 @@ export const withFooReducer = <S extends StateWithFoo>(config: Config) => (
             break;
     }
 
-    return baseReducer(newState, action);
+    return baseReducer(state, action);
 };
 //endregion
