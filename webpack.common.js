@@ -32,7 +32,7 @@ module.exports = (NODE_ENV, env) => {
         },
         plugins: [
             new ForkTsCheckerWebpackPlugin({
-                async: true,
+                async: !isProd,
             }),
             new HtmlWebPackPlugin({
                 template: Path.join(paths.assets.path, paths.assets.file),
