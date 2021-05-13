@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
@@ -24,8 +25,7 @@
       "./src/@types"
     ],
     "paths": {
-      "@tips/*": ["src/tips/*"],
-      "@shared/*": ["src/shared/*"]
+      "@src/*": ["src/*"],
     }
   },
   "include": [
